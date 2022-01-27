@@ -1,0 +1,17 @@
+Project Description
+
+We wanted to create a restaurant website where you can make an account, order food, and add to a shopping cart. The focus of this project is to gain familiarity with GitHUb 
+repositories.
+
+Group Member and Responsibilities:
+
+Miles Jiang: user authentication and shopping cart logic
+Michael Maines: food models and corresponding logic
+
+MVP features:
+signup/login/logout functionality
+shopping cart functionality
+food items, some of which which will ask for customization
+
+Reach features:
+Ping the google maps api to give an estimate of delivery based on user address
