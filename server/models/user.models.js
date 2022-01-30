@@ -32,7 +32,7 @@ const UserSchema = new mongoose.Schema(
 UserSchema.virtual("confirmPassword")
   .get(function () {
     return this._confirmPassword;
-  })gt
+  })
   .set(function (value) {
     this._confirmPassword = value;
   });
