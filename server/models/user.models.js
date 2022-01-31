@@ -25,6 +25,12 @@ const UserSchema = new mongoose.Schema(
       required: [true, "Please enter a secure password"],
       minLength: [8, "Password must be 8 characters or longer"],
     },
+    address: {
+      street: String,
+      city: String,
+      state: String,
+      zipcode: String,
+    },
   },
   { timestamps: true }
 );
