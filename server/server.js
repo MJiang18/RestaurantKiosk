@@ -17,6 +17,7 @@ app.get('/', (req, res, next) => {
 
 app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use('/api/restaurantKiosk', require('./routes/restaurantKiosk'));
+app.use('/api/private', require('./routes/private'));
 app.use(express.urlencoded({ extended: true }));
 
 const PORT = process.env.PORT || 8000;
