@@ -26,10 +26,26 @@ const UserSchema = new mongoose.Schema(
       minLength: [8, "Password must be 8 characters or longer"],
     },
     address: {
-      street: String,
-      city: String,
-      state: String,
-      zipcode: String,
+      street: {
+        type: String,
+        required: [true, "Please enter your street address"],
+        minLength: [2, "Street names must be 2 characters or longer"],
+      },
+      city: {
+        type: String,
+        required: [true, "Please enter your city of residence"],
+        minLength: [2, "City names must be 2 characters or longer"],
+      },
+      state: {
+        type: String,
+        required: [true, "Please enter your state of residence"],
+        minLength: [2, "State names must be 2 characters or longer"],
+      },
+      zipcode: {
+        type: String,
+        required: [true, "Please enter your zipcode of residence"],
+        minLength: [5, "Zipcodes must be 5 numbers or longer"],
+      },
     },
   },
   { timestamps: true }
