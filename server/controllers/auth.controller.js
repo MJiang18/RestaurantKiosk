@@ -50,3 +50,17 @@ module.exports.logOut = (request, response) => {
   response.clearCookie("usertoken");
   response.sendStatus(200);
 };
+
+module.exports.getAllUsers = (request, response) => {
+  User.find({})
+    .collation({ locale: "en", strength: 2 })
+    .sort({ firstName: 1 })
+    .then((users) => response.json(users))
+    .catch((error) => response.json(error));
+};
+
+module.exports.deleteUser = (request, response) => {
+  User.deleteOne({ _id: request.params.userid })
+    .then((deletedConfirmation) => response.json(deletedConfirmation))
+    .catch((error) => response.json(error));
+};
