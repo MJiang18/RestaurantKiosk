@@ -1,11 +1,17 @@
-const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
+const secret = "I can't believe this key is so secret";
 
-mongoose
-  .connect("mongodb://localhost/restaurantKioskdb", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("Established a connection to the database"))
-  .catch((error) =>
-    console.log("Something went wrong when connecting to the database", error)
+module.exports.secret = secret;
+module.exports.authenticate = (request, response, next) => {
+  jwt.verify(
+    request.cookies.usertoken,
+    process.env.SECRET_KEY,
+    (err, payload) => {
+      if (err) {
+        response.status(401).json({ verified: false });
+      } else {
+        next();
+      }
+    }
   );
+};
