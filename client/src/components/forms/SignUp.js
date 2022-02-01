@@ -18,7 +18,7 @@ const SignUp = () => {
     e.preventDefault();
 
     axios
-      .post('http://localhost:8000/api/user', {
+      .post('http://localhost:8000/signup', {
         firstName,
         lastName,
         email,
@@ -43,12 +43,14 @@ const SignUp = () => {
     <div>
       <form>
         <h1>Restaurant Kiosk</h1>
-        <button>
-          <Link to='/'>Login</Link>
-        </button>
-        <button>
-          <Link to='/'>Register</Link>
-        </button>
+
+        <Link to='/update'>
+          <button>Update</button>
+        </Link>
+
+        <Link to='/login'>
+          <button>Login</button>
+        </Link>
 
         <div className='border'>
           <div className='container'>
@@ -137,7 +139,7 @@ const SignUp = () => {
                 )}
               </p>
               <p>
-                <button onClick={onSubmitHandler}>Submit</button>
+                <button onClick={onSubmitHandler}>Sign Up</button>
               </p>
             </div>
           </div>
