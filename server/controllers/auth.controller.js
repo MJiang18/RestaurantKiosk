@@ -64,3 +64,32 @@ module.exports.deleteUser = (request, response) => {
     .then((deletedConfirmation) => response.json(deletedConfirmation))
     .catch((error) => response.json(error));
 };
+
+module.exports.updateUser = async (request, response) => {
+  const user = await User.findById({ _id: request.params.userid });
+
+  if (!user) {
+    return response.status(404).json("User not found");
+  }
+
+  const samePassword = await bcrypt.compare(
+    request.body.password,
+    user.password
+  );
+
+  if (!samePassword) {
+    user.password = request.body.password;
+    user._confirmPassword = request.body.password;
+  }
+
+  user.firstName = request.body.firstName;
+  user.lastName = request.body.lastName;
+  user.email = request.body.email;
+  user.address = request.body.address;
+  user
+    .save()
+    .then((updatedUser) => {
+      response.json(updatedUser);
+    })
+    .catch((error) => response.status(400).json(error));
+};
