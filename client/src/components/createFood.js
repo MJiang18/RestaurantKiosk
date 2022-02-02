@@ -38,7 +38,7 @@ return (
         </header>
 
         <form onSubmit={submitHandlerFood}>
-            <div classname="form-fields">
+            <div className="form-fields">
                 <label>Food Name</label>
                 <input 
                 onChange={(e) => setFoodName(e.target.value)}
@@ -48,7 +48,7 @@ return (
                  />
 
             </div>
-            <div classname="form-fields">
+            <div className="form-fields">
                 <label>Price: </label>
                 <input 
                 onChange={(e) => setFoodPrice(e.target.value)}
@@ -58,7 +58,7 @@ return (
                  />
 
             </div>
-            <div classname="form-fields">
+            <div className="form-fields">
                 <label>Description: </label>
                 <input 
                 onChange={(e) => setFoodDescription(e.target.value)}
@@ -71,6 +71,7 @@ return (
             <input className="submit-input" type="submit" value="Create" />
 
         </form>
+        
     </div>
 );
 };
