@@ -60,6 +60,7 @@ UserSchema.virtual("confirmPassword")
   });
 
 UserSchema.pre("validate", function (next) {
+  console.log("VALIDATING");
   if (this.isModified("password")) {
     if (this.password !== this._confirmPassword) {
       this.invalidate("confirmPassword", "Passwords do not match");
@@ -69,6 +70,8 @@ UserSchema.pre("validate", function (next) {
 });
 
 UserSchema.pre("save", function (next) {
+  console.log("pre save");
+  console.log(this.isModified("password"));
   if (!this.isModified("password")) {
     return next();
   }
