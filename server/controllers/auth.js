@@ -46,28 +46,37 @@ exports.signUp = async (req, res, next) => {
 //     });
 // };
 
-// module.exports.signIn = async (request, response) => {
-//   let { email, password } = request.body;
-//   const user = await User.findOne({ email: email });
+// login User
+exports.signIn = async (req, res, next) => {
+  const { email, password } = req.body;
 
-//   if (user == null) {
-//     return response.status(404).json({ error: 'user not found' });
-//   }
+  // check if email and password is provided
+  if (!email || !password) {
+    return next(
+      new ErrorResponse('Please provide an email and password.', 400),
+    );
+  }
 
-//   const passwordMatch = await bcrypt.compare(password, user.password);
+  try {
+    // check if user exists by email
+    const user = await User.findOne({ email }).select('+password');
 
-//   if (!passwordMatch) {
-//     return response.status(400).json({ error: 'incorrect password' });
-//   }
+    if (!user) {
+      return next(new ErrorResponse('Invalid credentials.', 401));
+    }
 
-//   const userToken = jwt.sign({ id: user._id }, process.env.SECRET_KEY);
+    // check if passwords match
+    const isMatch = await user.matchPassword(password);
 
-//   response
-//     .cookie('usertoken', userToken, secret, {
-//       httpOnly: true,
-//     })
-//     .json(user);
-// };
+    if (!isMatch) {
+      return next(new ErrorResponse('Invalid credentials.', 401));
+    }
+
+    sendToken(user, 200, res);
+  } catch (err) {
+    next(err);
+  }
+};
 
 // module.exports.logOut = (request, response) => {
 //   response.clearCookie('usertoken');

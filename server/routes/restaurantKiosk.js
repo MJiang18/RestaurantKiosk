@@ -2,14 +2,14 @@ const express = require('express');
 const router = express.Router();
 const {
   signUp,
-  // signIn,
+  signIn,
   // logOut,
   // getAllUsers,
   // deleteUser,
 } = require('../controllers/auth');
 
 router.route('/signup').post(signUp);
-// router.route('/signIn').post(signIn);
+router.route('/signin').post(signIn);
 // router.route('/logOut').post(logOut);
 // router.route('/users').get(getAllUsers);
 // router.route('/user/:userid').delete(deleteUser);

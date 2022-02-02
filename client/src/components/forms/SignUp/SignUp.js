@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import './signup.css';
 
 const SignUp = () => {
   const [firstName, setFirstName] = useState('');
@@ -12,9 +13,9 @@ const SignUp = () => {
   const [street, setStreet] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState({});
+  const [error, setError] = useState([]);
   let navigate = useNavigate();
-
+  
   const onSubmitHandler = async (e) => {
     e.preventDefault();
 
@@ -61,21 +62,27 @@ const SignUp = () => {
   };
 
   return (
-    <div>
-      <form>
+    <div className='signup'>
+      <form onSubmit={onSubmitHandler}>
+        <div className='navbar'>
         <h1>Restaurant Kiosk</h1>
-        <Link to='/update'>
-          <button>Update</button>
+    <div className='nav-buttons'>
+          <button required id = 'register'>
+        <Link  to='/signup'>Register
         </Link>
+          </button>
+          <button>
         <Link to='/login'>
-          <button>Login</button>
+          Login
         </Link>
-        <div className='border'>
+          </button>
+          </div>
+        </div>
           <div className='container'>
-            <div className='form-control'>
-              <p>
-                <label>First Name:</label>
-
+        <h1>Sign Up!</h1>
+        <div className='border'>
+          <div className='input-fields-name'>
+       <p>
                 <input
                   type='text'
                   placeholder='First Name'
@@ -83,11 +90,10 @@ const SignUp = () => {
                   required
                   id='firstName'
                   onChange={(e) => setFirstName(e.target.value)}
-                />
-              </p>
+                  />
+                {error}
+                  </p>
               <p>
-                <label>Last Name:</label>
-
                 <input
                   type='text'
                   placeholder='Last Name'
@@ -95,11 +101,11 @@ const SignUp = () => {
                   required
                   id='lastName'
                   onChange={(e) => setLastName(e.target.value)}
-                />
-              </p>
+                  />
+                  </p>
+                  </div>
+                  <div className='form-control'>
               <p>
-                <label>Email:</label>
-
                 <input
                   type='text'
                   placeholder='Email'
@@ -107,14 +113,14 @@ const SignUp = () => {
                   required
                   id='email'
                   onChange={(e) => setEmail(e.target.value)}
-                />
+                  />
               </p>
+                </div>
+                <div className='container-state'>
+
+                <h3>    Address     </h3>
+                          <div className='input-fields-street'>
               <p>
-                <label>Address:</label>
-
-                <br />
-                <label>Street:</label>
-
                 <input
                   type='text'
                   placeholder='Street'
@@ -122,35 +128,9 @@ const SignUp = () => {
                   required
                   id='street'
                   onChange={(e) => setStreet(e.target.value)}
-                />
+                  />
               </p>
               <p>
-                <label>City:</label>
-
-                <input
-                  type='text'
-                  placeholder='City'
-                  value={city}
-                  required
-                  id='city'
-                  onChange={(e) => setCity(e.target.value)}
-                />
-              </p>
-              <p>
-                <label>Zip Code</label>
-
-                <input
-                  type='text'
-                  placeholder='Zip Code'
-                  value={zipcode}
-                  required
-                  id='zipcode'
-                  onChange={(e) => setZipcode(e.target.value)}
-                />
-              </p>
-              <p>
-                <label>State:</label>
-
                 <input
                   type='text'
                   placeholder='State'
@@ -158,10 +138,50 @@ const SignUp = () => {
                   required
                   id='state'
                   onChange={(e) => setState(e.target.value)}
-                />
+                  />
+              </p>
+                  
+                  </div>
+                  </div>
+                  <div className='input-fields-zip'>
+           
+              <p>
+                
+                <input
+                  type='text'
+                  placeholder='Zip Code'
+                  value={zipcode}
+                  required
+                  id='zipcode'
+                  onChange={(e) => setZipcode(e.target.value)}
+                  />
               </p>
               <p>
-                <label>Password:</label>
+               
+                 <select  required id='citys' onChange={(e) => setCity(e.target.value)} >
+                  <option value='city'>City</option>
+                  <option value='columbus'>columbus</option>
+                  <option value='New York'>New York</option>
+                  <option value='Seattle'>Seattle</option>
+                  <option value='Lexington'>Lexington</option>
+                  <option value='Ann Harbor'>Ann Harbor</option>
+                  <option value='Chicago'>Chicago</option>
+                  <option value='Washington D.C.'>Washington D.C.</option>
+                  <option value='Los Angeles'>Los Angeles</option>
+                  <option value='Atlanta'>Atlanta</option>
+                  <option value='Nashville'>Nashville</option>
+                  <option value='New Orleans'>New Orleans</option>
+                  <option value='Tampa Bay'>Tampa Bay</option>
+                  <option value='Portland'>Portland</option>
+                </select>
+              </p>
+                   
+                    </div>
+
+                <div className='form-control'>
+                    <div className='input-fields-password'>
+              <p>
+          
 
                 <input
                   type='password'
@@ -170,10 +190,12 @@ const SignUp = () => {
                   required
                   id='password'
                   onChange={(e) => setPassword(e.target.value)}
-                />
+                  />
               </p>
+                  </div>
+                  <div className='form-control'>
               <p>
-                <label>Confirm Password:</label>
+             
 
                 <input
                   type='password'
@@ -182,10 +204,12 @@ const SignUp = () => {
                   required
                   id='confirmPassword'
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                />
+                  />
               </p>
-              <button onClick={onSubmitHandler}>Sign Up</button>
-            </div>
+                  </div>
+                  </div>
+              <button type='submit' >Sign Up</button>
+              
           </div>
         </div>
       </form>

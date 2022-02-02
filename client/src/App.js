@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import SignUp from './components/forms/SignUp';
-import Update from './components/forms/Update';
-import Login from './components/forms/Login';
+import SignUp from './components/forms/SignUp/SignUp';
+import Update from './components/forms/Update/Update';
+import Login from './components/forms/Login/Login';
 import Main from './components/screens/Main';
 
 import PrivateRoutes from './components/routes/PrivateRoutes';
