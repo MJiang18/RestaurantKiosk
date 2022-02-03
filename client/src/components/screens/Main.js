@@ -41,6 +41,14 @@ const Main = () => {
   return (
     <div>
       <div>
+        <div className="navbar">
+
+          <Link to={'/menu'}>Menu</Link> ||
+          <Link to={'/addFoodpage'}>Add Menu Item</Link> ||
+          {/* <Link to={'/shoppingCart'}>Detailed Task</Link> */}
+          {/* <Link to={'/Account'}>Detailed Task</Link> */}
+          <button onClick={logoutHandler}>Logout </button>
+        </div>
         <h1>Welcome {privateName}</h1>
         {error ? (
           <span>{error}</span>
@@ -49,15 +57,8 @@ const Main = () => {
             <div>{privateData}</div>
           </>
         )}
-        <div className="navbar">
-
-          <Link to={'/menu'}>Menu</Link> ||
-          <Link to={'/shoppingCart'}>Detailed Task</Link>
-          <Link to={'/Account'}>Detailed Task</Link>
-          <button onClick={logoutHandler}>Logout </button>
-        </div>
       </div>
-      <Link to='/signup'>signup</Link>
+      
     </div>
   );
 };

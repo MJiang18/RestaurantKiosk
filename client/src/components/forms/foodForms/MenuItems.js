@@ -6,7 +6,7 @@ const MenuItems = (props) => {
     const [menuItems, setMenuItems] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/food/')
+        axios.get('http://localhost:8000/api/restaurantKiosk/foodItems/')
             .then(res => {
                 console.log(res);
                 console.log(res.data);
@@ -19,6 +19,7 @@ const MenuItems = (props) => {
 
     return (
         <div>
+            <Link to='/'>Home</Link>
             <header>
                 <div>
                     <h1>Meals for Sale</h1>
@@ -37,6 +38,9 @@ const MenuItems = (props) => {
                                 <td>{item.name}</td>
                                 <td>{item.price}</td>
                                 <td>{item.description}</td>
+                                <td>
+                                    <Link to={`/food/${item._id}`}>Edit</Link>
+                                </td>
                             </tr>)
                         })
                     }

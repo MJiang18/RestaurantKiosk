@@ -12,7 +12,7 @@ const CreateFood = (props) => {
             
             e.preventDefault();
     
-            axios.post("http://localhost:8000/api/food/create", {
+            axios.post("http://localhost:8000/api/restaurantKiosk/addFood", {
             name,
             price,
             description
