@@ -36,9 +36,9 @@ const Login = () => {
   }
 }
   return (
-    <div className='login-container'>
+    <div className='login1st-container'>
     <form onSubmit={loginHandler}>
-    <div className='navbar'>
+    <div className='login-navbar'>
     <h1>Restaurant Kiosk</h1>
     <div className='login-nav-buttons'>
           <button required id = 'register'>
@@ -52,11 +52,11 @@ const Login = () => {
           </button>
           </div>
         </div>
-        <div className='container'>
+        <div className='login-container'>
           <h1>Welcome Back!</h1>
            <div className='border'>
         <div className='input-fields-name'>
-          <div className="input-container">
+          <div className="login-input-container">
 
               <input
                 type='email'

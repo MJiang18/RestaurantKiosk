@@ -62,8 +62,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className='signup'>
-      <form onSubmit={onSubmitHandler}>
+    <div>
         <div className='navbar'>
         <h1>Restaurant Kiosk</h1>
     <div className='nav-buttons'>
@@ -77,7 +76,10 @@ const SignUp = () => {
           </button>
           </div>
         </div>
-          <div className='container'>
+        <div className='signup'>
+
+    <form onSubmit={onSubmitHandler}>
+          <div className='signup-container'>
         <h1>Sign Up!</h1>
         <div className='border'>
           <div className='input-fields-name'>
@@ -213,6 +215,7 @@ const SignUp = () => {
         </div>
       </form>
     </div>
+                  </div>
   );
 };
 

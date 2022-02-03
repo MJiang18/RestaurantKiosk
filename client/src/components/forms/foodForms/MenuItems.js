@@ -6,10 +6,10 @@ const MenuItems = (props) => {
     const [menuItems, setMenuItems] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/food/')
+        axios.get('http://localhost:8000/api/restaurantKiosk/foodItems/')
             .then(res => {
-                console.log(res);
-                console.log(res.data);
+                // console.log(res);
+                // console.log(res.data);
                 setMenuItems(res.data);
             })
             .catch(err => {
@@ -19,16 +19,23 @@ const MenuItems = (props) => {
 
     return (
         <div>
+            <Link to='/'>Home</Link>
             <header>
                 <div>
                     <h1>Meals for Sale</h1>
                 </div>
             </header>
-            <table style={{margin: "auto", border: "1px solid black"}}>
-                <thead style={{backgroundColor: "lightgray", color: "white"}}>
+            <table>
+                <thead >
+                    <tr>
                     <th>Meal Item</th>
+                    </tr>
+                    <tr>
                     <th>Price</th>
+                    </tr>
+                    <tr>
                     <th>Description</th>
+                    </tr>
                 </thead>
                 <tbody>
                     {
@@ -37,6 +44,9 @@ const MenuItems = (props) => {
                                 <td>{item.name}</td>
                                 <td>{item.price}</td>
                                 <td>{item.description}</td>
+                                <td>
+                                    <Link to={`/food/${item._id}`}>Edit</Link>
+                                </td>
                             </tr>)
                         })
                     }

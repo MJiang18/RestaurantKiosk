@@ -1,0 +1,80 @@
+h1 {
+  font-size: 50px;
+  font-weight: normal;
+}
+h2 {
+  font-size: 30px;
+  font-weight: normal;
+}
+
+.box {
+  width: 800px;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 30px;
+}
+
+.container {
+  width: 793px;
+  height: 300px;
+  display: inline-flex;
+}
+
+.border {
+  height: 380px;
+  width: 760px;
+  border: 3px solid black;
+  padding-left: 40px;
+}
+.form-control {
+  width: 350px;
+  height: 300px;
+}
+.skill-form-control {
+  width: 350px;
+  height: 300px;
+}
+
+.button {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  background-image: url('./update.png');
+  background-repeat: no-repeat;
+  background-position: 30px;
+  background-color: #2b78e4;
+  border: transparent;
+  margin-top: 20px;
+  padding-left: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  width: 180px;
+  height: 40px;
+  box-shadow: 3px 3px 3px 3px black;
+}
+
+.container p {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 300px;
+  height: 60px;
+  margin-bottom: 50px;
+  font-size: 20px;
+}
+.container input {
+  height: 25px;
+  width: 220px;
+  display: block;
+  border: 3px solid black;
+}
+
+.container label {
+  margin-left: 10px;
+}
+
+.home-link {
+  margin-left: 700px;
+}
