@@ -11,9 +11,5 @@ module.exports = function (app) {
   
   
   //Food routes to create, get, update, and delete food
-  app.post("/food/create", OrderList.createFood);
-  // app.get("api/menu", OrderList.getAllFood);
-  // app.get("api/food/:id", OrderList.getFoodById);
-  // app.put("api/food/:id", OrderList.updateFood);
-  // app.delete("api/food/:id", OrderList.deleteFood);
+  
 };
