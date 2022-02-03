@@ -4,6 +4,7 @@ import SignUp from './components/forms/SignUp/SignUp';
 import Update from './components/forms/Update/Update';
 import Login from './components/forms/Login/Login';
 import Main from './components/screens/Main';
+import MenuItems from './components/forms/foodForms/MenuItems';
 
 import PrivateRoutes from './components/routes/PrivateRoutes';
 
@@ -17,6 +18,7 @@ const App = () => {
           <Route path='/' element={<Main />} />
           <Route path='/login' element={<Login />} />
           <Route path='/update' element={<Update />} />
+          <Route path='/menu' element={<MenuItems />} />
         </Routes>
       </Router>
     </div>
