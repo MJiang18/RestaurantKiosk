@@ -1,29 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import './createFood.css';
 
 const CreateFood = (props) => {
 
     const [name, setName] = useState("")
     const [price, setPrice] = useState("")
     const [description, setDescription] = useState("")
+    let navigate = useNavigate();
+      useEffect(() => {
+    try {
+      if (!localStorage.getItem('token')) {
+        localStorage.removeItem('token');
+        navigate('/login');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  });
 
-    const submitHandlerFood = (e) => {
-            
+    const submitHandlerFood = async  (e) => {      
             e.preventDefault();
     
-            axios.post("http://localhost:8000/api/restaurantKiosk/addFood", {
+        const make = await  axios.post("http://localhost:8000/api/restaurantKiosk/addFood", {
             name,
             price,
             description
             })
             .then(res => {
-                console.log(res);
                 console.log(res.data);
                 //upon successful post
                 setName("");
                 setPrice("");
                 setDescription("");
+                navigate('/');
             })
             .catch(err => {
                 console.log(err);
@@ -31,48 +42,64 @@ const CreateFood = (props) => {
     
         }
         return (
-            <div>
-                <div>
-                <Link to='/login'>login</Link> ||
-                <Link to='/'>Home</Link>
-                </div>
-                <header>
+            <div className='create-container'>
+                <div className='create-navbar'>
+        <h1>Restaurant Kiosk</h1>
+    <div className='create-nav-buttons'>
+          <button required id = 'register'>
+        <Link  to='/'>Menu</Link>
+          </button>
+          <button required id = 'register'>
+        <Link  to='/addFoodpage'>Create</Link>
+          </button>
+          </div>
+        </div>
+           <div className='create-input-container'>
+                <div className='create-box'>
                     <h1>Create Food</h1>
-                </header>
-
+                
                 <form onSubmit={submitHandlerFood}>
+                        <h2>Any food ideas?</h2>
+                        <div className="create-food-input">
                     <div className="form-fields">
-                        <label>Food Name</label>
+
                         <input
                         onChange={(e) => setName(e.target.value)}
                         value={name}
                         name="name"
                         type="text" 
-
+                        placeholder='Name'
                         />
-                    </div>
+                        </div>
+                    
                     <div className="form-fields">
-                        <label>Price: </label>
+                      
                         <input
                         onChange={(e) => setPrice(e.target.value)}
                         value={price}
                         name="price"
                         type="number"
+                        placeholder='Price'
 
                         />
                     </div>
                     <div className="form-fields">
-                        <label>Description: </label>
+                        
                         <input
                         onChange={(e) => setDescription(e.target.value)}
                         value={description}
                         name="description"
+                        placeholder='Description'
                         type="text"
-
+                        
                         />
-                    </div>
-                    <input className="submit-input" type="submit" value="Create" />
+                        </div>
+                    <button type="submit">Submit</button>
+                        </div>
+                       
                 </form>
+                </div>
+                        </div>
             </div>
     );
 };
