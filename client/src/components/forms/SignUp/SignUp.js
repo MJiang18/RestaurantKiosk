@@ -68,8 +68,7 @@ const SignUp = () => {
         <h1>Restaurant Kiosk</h1>
     <div className='nav-buttons'>
           <button required id = 'register'>
-        <Link  to='/signup'>Register
-        </Link>
+        <Link  to='/signup'>Register</Link>
           </button>
           <button>
         <Link to='/login'>
