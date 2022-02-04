@@ -63,10 +63,3 @@ const FoodItems = require('../models/Food');
   }
 };
 
-module.exports.deleteFooditem = async (req, res) => {
-              console.log(req.params.id)
-  FoodItems.findByIdAndDelete({ _id: req.params.id })
-    .then((deleteConfirmation) => res.json(deleteConfirmation))
-    .catch((err) => res.json(err));
-};
-        
